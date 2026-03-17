@@ -4,7 +4,6 @@ const os = require("os");
 const fs = require("fs/promises");
 const { spawn } = require("child_process");
 const { Readable } = require("stream");
-const ffmpegStatic = require("ffmpeg-static");
 
 const app = express();
 const port = process.env.PORT || 3000;
@@ -1405,10 +1404,20 @@ async function hasFfmpeg() {
 
 async function getFfmpegPath() {
   if (ffmpegPathCache !== null) return ffmpegPathCache;
-  if (typeof ffmpegStatic === "string" && ffmpegStatic.length > 0) {
+  let ffmpegStaticPath = "";
+  try {
+    const ffmpegStatic = require("ffmpeg-static");
+    if (typeof ffmpegStatic === "string") {
+      ffmpegStaticPath = ffmpegStatic;
+    }
+  } catch (error) {
+    ffmpegStaticPath = "";
+  }
+
+  if (ffmpegStaticPath) {
     try {
-      await fs.access(ffmpegStatic);
-      ffmpegPathCache = ffmpegStatic;
+      await fs.access(ffmpegStaticPath);
+      ffmpegPathCache = ffmpegStaticPath;
       return ffmpegPathCache;
     } catch (error) {
       // Fall back to system ffmpeg if the bundled binary is missing.
