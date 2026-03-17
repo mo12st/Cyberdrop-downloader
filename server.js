@@ -1497,10 +1497,8 @@ function commandExists(command, args) {
   });
 }
 
-if (require.main === module) {
-  app.listen(port, () => {
-    console.log(`CyberDrop server running on http://localhost:${port}`);
-  });
-} else {
-  module.exports = { getMetadata, toMetadata, isValidUrl, isAllowedUrl };
-}
+module.exports = app;
+module.exports.getMetadata = getMetadata;
+module.exports.toMetadata = toMetadata;
+module.exports.isValidUrl = isValidUrl;
+module.exports.isAllowedUrl = isAllowedUrl;
