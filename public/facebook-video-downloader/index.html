@@ -1,0 +1,307 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#0f172a" />
+    <meta name="description" content="Download Facebook Reels and videos in multiple qualities. Paste the link and save quickly." />
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href="/facebook-video-downloader/" />
+    <meta property="og:title" content="Facebook Video Downloader | CyberDrop" />
+    <meta property="og:description" content="Download Facebook Reels and videos in multiple qualities. Paste the link and save quickly." />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="/facebook-video-downloader/" />
+    <meta property="og:image" content="/logo.svg" />
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content="Facebook Video Downloader | CyberDrop" />
+    <meta name="twitter:description" content="Download Facebook Reels and videos in multiple qualities. Paste the link and save quickly." />
+    <meta name="twitter:image" content="/logo.svg" />
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "WebSite",
+        "name": "CyberDrop",
+        "url": "https://example.com/",
+        "description": "Download videos and audio from TikTok, Instagram, YouTube, Facebook, Pinterest, and X with CyberDrop.",
+        "inLanguage": "en"
+      }
+    </script>
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "SoftwareApplication",
+        "name": "CyberDrop",
+        "applicationCategory": "MultimediaApplication",
+        "operatingSystem": "Any",
+        "url": "https://example.com/",
+        "description": "Download videos and audio from TikTok, Instagram, YouTube, Facebook, Pinterest, and X with CyberDrop."
+      }
+    </script>
+    <title>Facebook Video Downloader | CyberDrop</title>
+    <link rel="icon" href="../logo.svg" type="image/svg+xml" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Oxanium:wght@500;600;700&family=Outfit:wght@400;500;600;700&family=Noto+Sans+Arabic:wght@400;600;700&family=Noto+Sans+JP:wght@400;600;700&family=Noto+Sans+SC:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../styles.css" />
+  </head>
+  <body>
+    <div class="ambient">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+
+    <header class="site-header">
+      <div class="brand">
+        <div class="brand-mark">
+          <img src="../logo.svg" alt="CyberDrop logo" />
+        </div>
+        <div>
+          <div class="brand-name">CyberDrop</div>
+          <div class="brand-tag" data-i18n="brand.tag">
+            Drop the link. Download instantly.
+          </div>
+        </div>
+      </div>
+      <div class="header-actions">
+        <div class="top-row">
+          <nav class="nav">
+            <a href="#download" data-i18n="nav.download">Download</a>
+            <a href="#formats" data-i18n="nav.formats">Formats</a>
+            <a href="#features" data-i18n="nav.features">Features</a>
+          </nav>
+          <div class="lang-switch">
+            <span data-i18n="lang.label">Language</span>
+            <select id="langSelect" aria-label="Language">
+              <option value="en">English</option>
+              <option value="ar">العربية</option>
+              <option value="ja">日本語</option>
+              <option value="zh">中文</option>
+              <option value="ru">Русский</option>
+              <option value="fr">Français</option>
+              <option value="es">Español</option>
+              <option value="de">Deutsch</option>
+            </select>
+          </div>
+        </div>
+        <div class="platform-strip" aria-label="Platforms">
+          <a class="platform-chip" data-platform-link="tiktok" href="/tiktok-downloader/">TikTok</a>
+          <a class="platform-chip" data-platform-link="instagram" href="/instagram-downloader/">Instagram</a>
+          <a class="platform-chip" data-platform-link="youtube" href="/youtube-shorts-downloader/">YouTube</a>
+          <a class="platform-chip" data-platform-link="facebook" href="/facebook-video-downloader/">Facebook</a>
+          <a class="platform-chip" data-platform-link="pinterest" href="/pinterest-video-downloader/">Pinterest</a>
+          <a class="platform-chip" data-platform-link="twitter" href="/twitter-video-downloader/">X</a>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div class="hero-text">
+          <div class="badge">
+            TikTok · Instagram · YouTube · Facebook · Pinterest · X
+          </div>
+          <h1 class="reveal">Facebook Video Downloader</h1>
+          <p class="reveal">Paste a Facebook link, choose format and quality, and download quickly.</p>
+        </div>
+
+        <div class="hero-card reveal" id="download">
+          <div class="card-header">
+            <div>
+              <h2 data-i18n="card.title">Paste your link</h2>
+              <p data-i18n="card.subtitle">
+                Instant platform detection and smart quality.
+              </p>
+            </div>
+            <span class="platform-label" id="platformLabel">—</span>
+          </div>
+          <div class="input-wrap">
+            <div class="input-field">
+              <input
+                id="videoUrl"
+                type="url"
+                data-i18n-placeholder="input.placeholder"
+                placeholder="https://www.tiktok.com/@..."
+                autocomplete="off"
+              />
+              <button class="clear-btn" id="clearBtn" type="button" aria-label="Clear link">
+                ×
+              </button>
+            </div>
+            <button class="ghost-btn" id="pasteBtn" data-i18n="actions.paste">
+              Paste
+            </button>
+          </div>
+          <div class="format-row">
+            <div class="field">
+              <label for="fileType" data-i18n="labels.fileType">File type</label>
+              <select id="fileType"></select>
+            </div>
+            <div class="field">
+              <div class="field-row">
+                <label for="quality" data-i18n="labels.quality">Quality</label>
+                <label class="quality-toggle">
+                  <input type="checkbox" id="multiQuality" />
+                  <span data-i18n="quality.multi">Multi</span>
+                </label>
+              </div>
+              <select id="quality"></select>
+              <div class="quality-list" id="qualityList"></div>
+            </div>
+          </div>
+          <div class="action-row">
+            <button class="primary-btn" id="downloadBtn" data-i18n="actions.download">
+              Download
+            </button>
+          </div>
+          <small class="hint" data-i18n="hint.ffmpeg">Some formats need ffmpeg.</small>
+          <div class="form-message" id="formMessage" aria-live="polite"></div>
+          <div class="progress">
+            <div class="progress-bar" id="progressBar"></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="ad-banner" aria-label="Advertisement">
+        <div class="ad-card">
+          <span data-i18n="ad.label">Ad Space</span>
+          <span>970×90</span>
+        </div>
+      </section>
+
+      <section class="preview reveal" id="preview">
+        <div class="preview-card">
+          <div class="thumb" id="thumb">
+            <div class="thumb-title" id="thumbTitle">—</div>
+            <video id="videoPlayer" controls playsinline></video>
+            <div class="thumb-overlay">
+              <span id="thumbTag" data-i18n="preview.cover">Cover</span>
+              <span id="thumbPlatform">—</span>
+            </div>
+          </div>
+          <div class="meta">
+            <h3 id="videoTitle">—</h3>
+            <p class="meta-author">
+              <span data-i18n="meta.creator">Creator</span>
+              <strong id="videoAuthor">—</strong>
+            </p>
+            <div class="meta-grid">
+              <div>
+                <span data-i18n="preview.duration">Duration</span>
+                <strong id="videoDuration">—</strong>
+              </div>
+              <div>
+                <span data-i18n="preview.resolution">Resolution</span>
+                <strong id="videoResolution">—</strong>
+              </div>
+              <div>
+                <span data-i18n="preview.size">Size</span>
+                <strong id="videoSize">—</strong>
+              </div>
+              <div>
+                <span data-i18n="preview.status">Status</span>
+                <strong id="videoStatus" data-i18n="status.ready">Ready</strong>
+              </div>
+              <div>
+                <span data-i18n="preview.analyze">Analyze time</span>
+                <strong id="analyzeTime">—</strong>
+              </div>
+              <div>
+                <span data-i18n="preview.download">Download time</span>
+                <strong id="downloadTime">—</strong>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="formats reveal" id="formats">
+        <h2 data-i18n="sections.formatsTitle">Formats & Qualities</h2>
+        <div class="format-grid">
+          <div class="format-card">
+            <h3 data-i18n="formats.video.title">Video</h3>
+            <p data-i18n="formats.video.desc">MP4 · WebM</p>
+            <span data-i18n="formats.video.note">360p → 4K</span>
+          </div>
+          <div class="format-card">
+            <h3 data-i18n="formats.audio.title">Audio</h3>
+            <p data-i18n="formats.audio.desc">MP3 · M4A · WAV</p>
+            <span data-i18n="formats.audio.note">High quality</span>
+          </div>
+          <div class="format-card">
+            <h3 data-i18n="formats.auto.title">Auto</h3>
+            <p data-i18n="formats.auto.desc">Best match</p>
+            <span data-i18n="formats.auto.note">Fast start</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="features reveal" id="features">
+        <h2 data-i18n="sections.featuresTitle">Why CyberDrop</h2>
+        <div class="feature-grid">
+          <div class="feature-card">
+            <h3 data-i18n="features.one.title">Smart detection</h3>
+            <p data-i18n="features.one.desc">
+              Auto-detects the platform from the URL.
+            </p>
+          </div>
+          <div class="feature-card">
+            <h3 data-i18n="features.two.title">More formats</h3>
+            <p data-i18n="features.two.desc">
+              Video + audio with flexible quality.
+            </p>
+          </div>
+          <div class="feature-card">
+            <h3 data-i18n="features.three.title">Mobile ready</h3>
+            <p data-i18n="features.three.desc">
+              Looks great on any screen.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section class="ad-grid reveal" aria-label="Advertisement">
+        <div class="ad-card">
+          <span data-i18n="ad.label">Ad Space</span>
+          <span>300×250</span>
+        </div>
+        <div class="ad-card">
+          <span data-i18n="ad.label">Ad Space</span>
+          <span>300×250</span>
+        </div>
+      </section>
+
+      <section class="sr-only" aria-label="FAQ">
+        <h2>FAQ</h2>
+        <dl>
+          <dt>How do I download a video?</dt>
+          <dd>Paste the link, choose a format and quality, then click download.</dd>
+          <dt>Which platforms are supported?</dt>
+          <dd>TikTok, Instagram, YouTube, Facebook, Pinterest, and X are supported.</dd>
+          <dt>Do I need to install anything?</dt>
+          <dd>No. Everything runs in the browser with the server handling downloads.</dd>
+        </dl>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div>
+        <strong>CyberDrop</strong>
+        <span data-i18n="footer.tagline">Drop the link. Download instantly.</span>
+      </div>
+      <div class="footer-links">
+        <a href="#download" data-i18n="nav.download">Download</a>
+        <a href="#formats" data-i18n="nav.formats">Formats</a>
+        <a href="#features" data-i18n="nav.features">Features</a>
+        <a href="#platforms" data-i18n="nav.platforms">Platforms</a>
+      </div>
+    </footer>
+
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+    <script src="../app.js"></script>
+  </body>
+</html>
