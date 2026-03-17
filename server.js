@@ -1406,7 +1406,12 @@ async function getFfmpegPath() {
   if (ffmpegPathCache !== null) return ffmpegPathCache;
   let ffmpegStaticPath = "";
   try {
-    const ffmpegStatic = require("ffmpeg-static");
+    const moduleName = ["ffmpeg", "static"].join("-");
+    const req =
+      typeof __non_webpack_require__ === "function"
+        ? __non_webpack_require__
+        : Function("return require")();
+    const ffmpegStatic = req(moduleName);
     if (typeof ffmpegStatic === "string") {
       ffmpegStaticPath = ffmpegStatic;
     }
