@@ -1406,8 +1406,13 @@ async function hasFfmpeg() {
 async function getFfmpegPath() {
   if (ffmpegPathCache !== null) return ffmpegPathCache;
   if (typeof ffmpegStatic === "string" && ffmpegStatic.length > 0) {
-    ffmpegPathCache = ffmpegStatic;
-    return ffmpegPathCache;
+    try {
+      await fs.access(ffmpegStatic);
+      ffmpegPathCache = ffmpegStatic;
+      return ffmpegPathCache;
+    } catch (error) {
+      // Fall back to system ffmpeg if the bundled binary is missing.
+    }
   }
   const exists = await commandExists("ffmpeg", ["-version"]);
   ffmpegPathCache = exists ? "ffmpeg" : "";
