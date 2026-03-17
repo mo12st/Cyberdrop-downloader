@@ -4,8 +4,9 @@
   "private": true,
   "type": "commonjs",
   "scripts": {
+    "build": "node scripts/inject-env.js",
     "postinstall": "node scripts/fetch-yt-dlp.js",
-    "start": "node server.js"
+    "start": "node backend/server.js"
   },
   "dependencies": {
     "express": "^4.19.2",

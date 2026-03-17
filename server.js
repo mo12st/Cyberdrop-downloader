@@ -45,6 +45,31 @@ const ALLOWED_HOSTS = [
   "t.co",
 ];
 
+const corsOrigins = (process.env.CORS_ORIGINS || "")
+  .split(",")
+  .map((value) => value.trim())
+  .filter(Boolean);
+const allowAllOrigins = corsOrigins.includes("*");
+
+app.use((req, res, next) => {
+  const origin = req.headers.origin;
+  if (origin && (allowAllOrigins || corsOrigins.includes(origin))) {
+    res.setHeader("Access-Control-Allow-Origin", allowAllOrigins ? "*" : origin);
+    res.setHeader("Access-Control-Allow-Methods", "GET,OPTIONS");
+    res.setHeader("Access-Control-Allow-Headers", "Content-Type,Range");
+    res.setHeader(
+      "Access-Control-Expose-Headers",
+      "Content-Disposition,Content-Length,Content-Type,Content-Range,Accept-Ranges"
+    );
+    res.setHeader("Vary", "Origin");
+  }
+  if (req.method === "OPTIONS") {
+    res.sendStatus(204);
+    return;
+  }
+  next();
+});
+
 app.use(express.static(path.join(__dirname, "public")));
 
 app.get("/api/metadata", async (req, res) => {

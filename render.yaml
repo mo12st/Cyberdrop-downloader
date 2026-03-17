@@ -1,0 +1,12 @@
+services:
+  - type: web
+    name: cyberdrop-backend
+    env: node
+    plan: free
+    buildCommand: npm install && apt-get update && apt-get install -y ffmpeg && python -m pip install -U yt-dlp
+    startCommand: node backend/server.js
+    envVars:
+      - key: CORS_ORIGINS
+        value: https://your-frontend.vercel.app
+      - key: NODE_ENV
+        value: production

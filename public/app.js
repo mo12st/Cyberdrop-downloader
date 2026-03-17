@@ -27,6 +27,9 @@ const qualitySelect = document.getElementById("quality");
 const multiQualityToggle = document.getElementById("multiQuality");
 const qualityList = document.getElementById("qualityList");
 
+const BACKEND_BASE_URL = (window.BACKEND_BASE_URL || "").trim().replace(/\/+$/, "");
+const apiUrl = (path) => (BACKEND_BASE_URL ? `${BACKEND_BASE_URL}${path}` : path);
+
 let currentType = "mp4";
 let currentQuality = "auto";
 let currentMeta = null;
@@ -1000,7 +1003,7 @@ async function fetchMetadata(url) {
     const timeout = setTimeout(() => controller.abort(), timeoutMs);
     try {
       const response = await fetch(
-        `/api/metadata?url=${encodeURIComponent(url)}`,
+        apiUrl(`/api/metadata?url=${encodeURIComponent(url)}`),
         { signal: controller.signal }
       );
       if (!response.ok) {
@@ -1115,7 +1118,7 @@ async function downloadSingle(url, quality) {
   )}&type=${encodeURIComponent(currentType)}&quality=${encodeURIComponent(
     quality || "auto"
   )}`;
-  const response = await fetch(downloadUrl);
+  const response = await fetch(apiUrl(downloadUrl));
 
   if (!response.ok) {
     throw new Error(await readErrorMessage(response));
@@ -1272,7 +1275,7 @@ function updateVideoPlayer(data, url) {
     return;
   }
 
-  const previewSrc = `/api/preview?url=${encodeURIComponent(url)}`;
+  const previewSrc = apiUrl(`/api/preview?url=${encodeURIComponent(url)}`);
   const fallbackSrc = data?.previewUrl || "";
   if (videoPlayer.dataset.src !== previewSrc) {
     thumb.classList.remove("has-video");
