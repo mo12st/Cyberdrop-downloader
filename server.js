@@ -230,6 +230,14 @@ app.get("/api/download", async (req, res) => {
   }
 });
 
+app.get("*", (req, res, next) => {
+  if (req.path.startsWith("/api/")) {
+    next();
+    return;
+  }
+  res.sendFile(path.join(__dirname, "public", "index.html"));
+});
+
 function isValidUrl(value) {
   try {
     const parsed = new URL(value);
@@ -1519,6 +1527,12 @@ function commandExists(command, args) {
     const child = spawn(command, args, { windowsHide: true });
     child.on("error", () => resolve(false));
     child.on("close", (code) => resolve(code === 0));
+  });
+}
+
+if (require.main === module) {
+  app.listen(port, "0.0.0.0", () => {
+    console.log(`Server listening on ${port}`);
   });
 }
 
