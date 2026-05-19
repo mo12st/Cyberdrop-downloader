@@ -1,6 +1,5 @@
-<img width="1132" height="879" alt="Screenshot 2026-05-19 225519" src="https://github.com/user-attachments/assets/28a13a45-6f56-4d0d-93d0-f78a0719c7bb" />
-# 🚀 Cyberdrop Downloader
-
+## 🚀 Cyberdrop Downloader
+<img width="824" height="640" alt="Screenshot 2026-05-19 225519" src="https://github.com/user-attachments/assets/7a1f555b-71b8-4888-9df0-8cc542660158" />
 An efficient, user-friendly Full-Stack Web Application designed to streamline and automate the process of fetching and downloading media from Cyberdrop links. Built with a robust Node.js backend and a clean, responsive front-end interface, this tool is fully containerized and production-ready.
 
 🌐 **Live Demo:** [cyberdrop-downloader.vercel.app](https://cyberdrop-downloader.vercel.app)
